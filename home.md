@@ -1,6 +1,8 @@
 ---
 permalink: /home
-layout: home
+redirect_from:
+  - /
+layout: page
 title: Home
 ---
 
