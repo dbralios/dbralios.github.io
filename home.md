@@ -1,8 +1,6 @@
 ---
-permalink: /
-redirect_from:
-  - /home
-layout: page
+permalink: /home
+layout: home
 title: Home
 ---
 
