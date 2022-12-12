@@ -6,7 +6,7 @@ layout: page
 title: Home
 ---
 
-<img align="right" src="{{site.baseurl}}assets/5457440.png" max-width="20%">
+<img align="right" src="{{site.baseurl}}assets/5457440.png" max-width=10%>
 
 Welcome! I am a first year Computer Science PhD student at the University of Illinois Urbana-Champaign (UIUC) working with Prof. Paris Smaragdis. Before that, I graduated with a degree in Electrical and Computer Engineering from the National Technical University of Athens (NTUA). 
 
