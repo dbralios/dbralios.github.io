@@ -14,6 +14,6 @@ My work is centered around Machine Learning and Deep Learning for __Audio__ and 
 
 <p align="center">
     <br>
-    <a href="https://scholar.google.com/citations?user=cJJwhzMAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp 
+    <a href="https://scholar.google.com/citations?user=cJJwhzMAAAAJ&hl=en">Google Scholar</a> / 
     <a href="https://github.com/dbralios" target="_blank"> GitHub </a> 
 </p>
