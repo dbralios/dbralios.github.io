@@ -4,13 +4,11 @@ layout: page
 title: Publications
 ---
 
-Welcome! I am a first year Computer Science PhD student at the University of Illinois Urbana-Champaign (UIUC) working with Prof. [Paris Smaragdis](https://paris.cs.illinois.edu). Before that, I graduated with a degree in Electrical and Computer Engineering from the National Technical University of Athens (NTUA). 
+__Latent Iterative Refinement for Modular Source Separation__\
+__Dimitrios Bralios__, Efthymios Tzinis, Gordon Wichern, Paris Smaragdis, Jonathan Le Roux
+arXiv preprint arXiv:2211.11917 2022
 
-My work is centered around Machine Learning and Deep Learning for __Audio__ and __Speech__ applications. 
 
-
-<p align="center">
-    <br>
-    <a href="https://scholar.google.com/citations?user=cJJwhzMAAAAJ&hl=en">Google Scholar</a> / 
-    <a href="https://github.com/dbralios" target="_blank"> GitHub </a> 
-</p>
+__Unified gradient reweighting for model biasing with applications to source separation__ \
+Efthymios Tzinis<sup>*</sup>, __Dimitrios Bralios__<sup>*</sup>, Paris Smaragdis
+In IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) 2021
