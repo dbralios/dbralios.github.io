@@ -12,5 +12,5 @@ Welcome! I am a first year Computer Science PhD student at the University of Ill
 
 My work is centered around Machine Learning and Deep Learning for __Audio__ and __Speech__ applications. 
 
-<p align="center">[Google Scholar](https://scholar.google.com/citations?user=cJJwhzMAAAAJ&hl=en) / [Github](https://github.com/dbralios)</p>
+<center>[Google Scholar](https://scholar.google.com/citations?user=cJJwhzMAAAAJ&hl=en) / [Github](https://github.com/dbralios)</center>
 
