@@ -3,7 +3,7 @@
 main:
   - title: "Home"
     url: /home
-  - title: "Archives"
-    url: /archives/
+  # - title: "Archives"
+  #   url: /archives/
   - title: "Publications"
     url: /publications
