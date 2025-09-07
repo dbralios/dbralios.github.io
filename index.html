@@ -114,6 +114,11 @@
             margin-top: 0.2rem;
         }
 
+        .email {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
         .blue-link {
             color: #2563eb;
             text-decoration: none;
@@ -275,14 +280,19 @@
             margin-bottom: 0.75rem;
         }
 
-        .publication-links {
+        .publication-links{
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;            /* allow wrapping */
+            gap: .6rem .9rem;           /* row-gap / column-gap */
+            align-items: center;
         }
 
-        .publication-links a {
+        .publication-links a{
             color: #2563eb;
-            text-decoration: none;
+            white-space: nowrap;        /* keep [Abstract] on one line */
+            overflow-wrap: normal;
+            word-break: normal;
+            hyphens: none;
         }
 
         .publication-links a:hover {
@@ -346,13 +356,8 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" width="28" height="28" alt="Twitter">
                 </a>
             </div>
-            
-            <a
-            class="email"
-            target="_blank"
-            title="Email"
-            href="mailto:dbralios@illinois.edu"
-            >dbralios@illinois.edu</a>
+
+            <p class="email">dbralios [AT] illinois [DOT] edu</p>
         </div>
     </header>
 
