@@ -114,6 +114,12 @@
             margin-top: 0.2rem;
         }
 
+        .research-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         .email {
             color: #2563eb;
             text-decoration: none;
@@ -359,11 +365,30 @@
 
     <!-- Research focus -->
     <div class="about-item">
-    <span class="about-emoji" aria-hidden="true">📚</span>
-    <p>
-        My research focuses on <strong>representation learning and generative modeling for audio</strong>, with a common theme of doing more in the latent-space. Recent papers tackle lightweight bottleneck adaptation (Re-Bottlenecking), latent upsampling/upmixing, and probing latent diffusion for signs of replication.
+    <span class="about-emoji" aria-hidden="true">🔬</span>
+    <p> 
+        I develop <strong>efficient and structured representations</strong> for neural audio models. My work explores <strong>structured latent spaces</strong>, <strong>content-adaptive frame rates</strong>, and <strong>latent-domain audio processing</strong>, often by adapting pretrained audio autoencoders rather than rebuilding them from scratch. 
     </p>
     </div>
+
+    <div class="about-item">
+    <span class="about-emoji" aria-hidden="true">📚</span>
+    <div class="research-stack">
+    <p>
+        Recent work includes latent restructuring through <strong>Re-Bottleneck</strong>, dynamic latent frame rates through <strong>Elastic Time</strong>, and latent-domain bandwidth extension and upmixing. 
+        Earlier, I worked on source separation and generative modeling, including investigating training-data replication in audio diffusion models. 
+    </p>
+    <p>
+        My broader goal is to make generative audio systems more efficient, controllable, and reusable through better representations. 
+    </p>
+    </div>
+    </div>
+
+    <div class="about-item">
+    <span class="about-emoji" aria-hidden="true">✉️</span>
+    <p>
+    I am always happy to connect and discuss, if any of this sounds interesting feel free to reach out.
+    </p>
 
         
     </section>
