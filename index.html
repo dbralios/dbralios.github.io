@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://dbralios.github.io/">
     <meta property="og:site_name" content="Dimitrios Bralios">
     
-    <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -70,10 +70,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+        .tamil-name {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
         }
 
         .social-links a {
@@ -243,9 +244,19 @@
                 padding: 1.5rem;
             }
 
+            .publication-image {
+                align-self: center;
+            }
+
             .employment-item {
                 padding: 1rem;
             }
+        }
+
+        .publications-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
         }
 
         .publications-subtitle {
@@ -322,35 +333,174 @@
             filter: drop-shadow(0 1px 0 rgba(0,0,0,.04));
         }
 
+        .header-content {
+            flex: 1;
+            align-self: center;
+        }
+
+        .header-role {
+            margin-bottom: 0.6rem;
+            color: #4b5563;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .header-description {
+            max-width: 540px;
+            margin-bottom: 1.25rem;
+            color: #4b5563;
+            line-height: 1.65;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+
+        .email-button,
+        .email-button:link,
+        .email-button:visited {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            padding: 0.65rem 1rem;
+
+            background-color: #2563eb;
+            color: white;
+
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+            transition:
+                background-color 0.2s,
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .email-button:hover {
+            background-color: #1d4ed8;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.25);
+        }
+
+        .email-button:active {
+            background-color: #1e40af;
+            color: white;
+            transform: translateY(0);
+        }
+
+        .email-button:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, 0.3);
+            outline-offset: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0;
+        }
+
     </style>
-</head>
-<body>
+
     <header class="header">
         <img src="./img/portrait.jpg" alt="Profile" class="profile-img">
+
         <div class="header-content">
             <h1>Dimitrios Bralios</h1>
-            <div class="social-links">
-                <a target="_blank" href="https://scholar.google.com/citations?user=5Yfl8UsAAAAJ" title="Google Scholar">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" width="28" height="28" alt="Google Scholar">
-                </a>
-            
-                <!-- LinkedIn -->
-                <a target="_blank" href="https://www.linkedin.com/in/dimitrios-bralios-b5652415a/" title="LinkedIn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" width="28" height="28" alt="LinkedIn">
+
+            <p class="header-role">
+                Audio ML Researcher - PhD Candidate at UIUC
+            </p>
+
+            <div class="header-actions">
+                <a
+                    class="email-button"
+                    href="mailto:dbralios@illinois.edu"
+                    aria-label="Email Dimitrios Bralios"
+                >
+                    <svg
+                        aria-hidden="true"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Email
                 </a>
 
-                <!-- GitHub -->
-                <a target="_blank" href="https://github.com/dbralios" title="Github">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="28" height="28" alt="GitHub">
-                </a>
+                <div class="social-links">
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://scholar.google.com/citations?user=5Yfl8UsAAAAJ"
+                        title="Google Scholar"
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg"
+                            width="28"
+                            height="28"
+                            alt="Google Scholar"
+                        >
+                    </a>
 
-                <!-- Twitter (X) -->
-                <a target="_blank" href="https://x.com/DBralios" title="Twitter">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" width="28" height="28" alt="Twitter">
-                </a>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.linkedin.com/in/dimitrios-bralios-b5652415a/"
+                        title="LinkedIn"
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                            width="28"
+                            height="28"
+                            alt="LinkedIn"
+                        >
+                    </a>
+
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/dbralios"
+                        title="GitHub"
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            width="28"
+                            height="28"
+                            alt="GitHub"
+                        >
+                    </a>
+
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://x.com/DBralios"
+                        title="X"
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg"
+                            width="28"
+                            height="28"
+                            alt="X"
+                        >
+                    </a>
+                </div>
             </div>
-
-            <p class="email">dbralios [AT] illinois [DOT] edu</p>
         </div>
     </header>
 
