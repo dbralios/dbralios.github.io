@@ -1,936 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Dimitrios Bralios — Audio ML Researcher</title>
-
-    <meta
-        name="description"
-        content="Dimitrios Bralios is an audio ML researcher working on generative audio, neural audio coding, and audio representations."
-    >
-    <link rel="canonical" href="https://dbralios.github.io/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Dimitrios Bralios — Audio ML Researcher">
-    <meta
-        property="og:description"
-        content="Research in generative audio, neural audio coding, and structured audio representations."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dbralios.github.io/">
-    <meta property="og:site_name" content="Dimitrios Bralios">
-    <style>
-        :root {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --surface-muted: #f8fafc;
-            --text: #1f2937;
-            --muted: #4b5563;
-            --subtle: #6b7280;
-            --line: #e5e7eb;
-            --accent: #2563eb;
-            --accent-dark: #1d4ed8;
-            --radius: 12px;
-            --shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        a {
-            color: var(--accent);
-        }
-
-        /* Hero */
-        .header {
-            display: grid;
-            grid-template-columns: 220px minmax(0, 1fr);
-            grid-template-areas:
-                "photo copy"
-                "photo actions";
-            align-items: center;
-            gap: 1.15rem 2rem;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            overflow: hidden;
-            background: var(--surface);
-            border: 1px solid rgba(229, 231, 235, 0.9);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .profile-img {
-            grid-area: photo;
-            width: 220px;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
-            transition: transform 0.2s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.015);
-        }
-
-        .header-content {
-            grid-area: copy;
-            min-width: 0;
-        }
-
-        .header-content h1 {
-            margin-bottom: 0.35rem;
-            font-size: clamp(2.25rem, 5vw, 3rem);
-            line-height: 1.08;
-            letter-spacing: -0.035em;
-            background: linear-gradient(90deg, #2563eb, #4f46e5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .header-role {
-            color: var(--muted);
-            font-size: 1.08rem;
-            font-weight: 600;
-            line-height: 1.45;
-        }
-
-        .header-actions {
-            grid-area: actions;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem 1.25rem;
-        }
-
-        .email-button,
-        .email-button:link,
-        .email-button:visited {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            min-height: 44px;
-            padding: 0.65rem 1rem;
-            background: var(--accent);
-            color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.22);
-            font-weight: 650;
-            text-decoration: none;
-            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-        }
-
-        .email-button:hover {
-            background: var(--accent-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 9px rgba(37, 99, 235, 0.24);
-        }
-
-        .email-button:active {
-            transform: translateY(0);
-        }
-
-        .email-button:focus-visible,
-        .social-links a:focus-visible,
-        .blue-link:focus-visible,
-        .publication-links a:focus-visible {
-            outline: 3px solid rgba(37, 99, 235, 0.28);
-            outline-offset: 3px;
-        }
-
-        .social-links {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-        }
-
-        .social-links a {
-            display: grid;
-            width: 36px;
-            height: 36px;
-            place-items: center;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.2s, transform 0.2s;
-        }
-
-        .social-links a:hover {
-            background: #eff6ff;
-            transform: translateY(-1px);
-        }
-
-        .social-links img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        /* Sections */
-        .section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: var(--surface);
-            border: 1px solid rgba(229, 231, 235, 0.9);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .section-title {
-            margin: -2rem -2rem 1.75rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(90deg, #f3f4f6, #eef2f7);
-            color: var(--text);
-            border-radius: 12px 12px 0 0;
-            font-size: 1.5rem;
-            font-weight: 750;
-            line-height: 1.25;
-        }
-
-        .about-item {
-            display: flex;
-            gap: 0.9rem;
-            margin-bottom: 0.55rem;
-            padding: 0.85rem;
-            border-radius: 8px;
-            transition: background-color 0.2s;
-        }
-
-        .about-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-item:hover {
-            background: var(--surface-muted);
-        }
-
-        .about-emoji {
-            display: inline-flex;
-            flex: 0 0 1.6rem;
-            align-items: center;
-            justify-content: center;
-            width: 1.6rem;
-            margin-top: 0.22rem;
-            font-size: 1.3rem;
-            line-height: 1;
-            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.04));
-        }
-
-        .research-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-        }
-
-        .blue-link {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .blue-link:hover {
-            color: var(--accent-dark);
-            text-decoration: underline;
-        }
-
-        /* Publications */
-        .publication-card {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-            background: var(--surface-muted);
-            border: 1px solid #eef2f7;
-            border-radius: 9px;
-        }
-
-        .publication-card:last-child {
-            margin-bottom: 0;
-        }
-
-        .publication-content {
-            min-width: 0;
-        }
-
-        .publication-content h3 {
-            margin-bottom: 0.65rem;
-            color: var(--text);
-            font-size: 1.22rem;
-            line-height: 1.35;
-        }
-
-        .publication-authors,
-        .publication-venue {
-            margin-bottom: 0.65rem;
-            color: var(--muted);
-        }
-
-        .publication-venue {
-            font-style: italic;
-        }
-
-        .publication-links {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem 0.85rem;
-        }
-
-        .publication-links a {
-            color: var(--accent);
-            white-space: nowrap;
-            text-decoration: none;
-        }
-
-        .publication-links a:hover {
-            text-decoration: underline;
-        }
-
-        .author-me {
-            font-weight: 750;
-        }
-
-        .award-badge {
-            display: inline-block;
-            padding: 0.1rem 0.45rem;
-            background: #fff3c4;
-            border: 1px solid #f2c14e;
-            border-radius: 0.5rem;
-            font-size: 0.85em;
-            font-weight: 750;
-        }
-
-        /* Experience and education */
-        .employment-grid,
-        .education-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .employment-item,
-        .education-item {
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-            padding: 1.25rem;
-            background: var(--surface-muted);
-            border: 1px solid #eef2f7;
-            border-radius: 9px;
-            transition: transform 0.2s;
-        }
-
-        .employment-item:hover {
-            transform: translateX(5px);
-        }
-
-        .institution-logo {
-            flex: 0 0 58px;
-            width: 58px;
-            height: 58px;
-            object-fit: contain;
-            padding: 3px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(15, 23, 42, 0.07);
-        }
-
-        .institution-details {
-            min-width: 0;
-        }
-
-        .institution-details h3 {
-            margin-bottom: 0.15rem;
-            color: var(--text);
-            font-size: 1.15rem;
-            line-height: 1.35;
-        }
-
-        .location {
-            margin-bottom: 0.15rem;
-            color: var(--subtle);
-        }
-
-        .degree {
-            margin-bottom: 0.15rem;
-            color: var(--accent);
-            font-weight: 650;
-        }
-
-        .date {
-            color: var(--subtle);
-            font-style: italic;
-        }
-
-        footer {
-            padding: 0.5rem 0 1.5rem;
-            color: var(--subtle);
-            font-size: 0.92rem;
-            text-align: center;
-        }
-
-        /* Mobile: keep one visual panel per section and remove nested padding. */
-        @media (max-width: 640px) {
-            body {
-                padding: 0.75rem;
-                font-size: 0.98rem;
-            }
-
-            /* Keep the hero deliberately vertical on phones. */
-            .header {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                margin-bottom: 1.25rem;
-                padding: 1.25rem;
-                border-radius: 11px;
-                text-align: center;
-            }
-
-            .profile-img {
-                width: min(100%, 280px);
-                height: auto;
-                align-self: center;
-                border-radius: 12px;
-                box-shadow: 0 4px 12px rgba(15, 23, 42, 0.13);
-            }
-
-            .header-content {
-                width: 100%;
-            }
-
-            .header-content h1 {
-                margin-bottom: 0.4rem;
-                font-size: clamp(2.05rem, 10vw, 2.65rem);
-                line-height: 1.06;
-                letter-spacing: -0.035em;
-                text-wrap: balance;
-            }
-
-            .header-role {
-                max-width: 22rem;
-                margin-inline: auto;
-                font-size: 1rem;
-                line-height: 1.4;
-                text-wrap: balance;
-            }
-
-            .header-actions {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                gap: 0.8rem;
-            }
-
-            .email-button,
-            .email-button:link,
-            .email-button:visited {
-                min-height: 42px;
-                padding: 0.58rem 0.95rem;
-                font-size: 0.98rem;
-            }
-
-            .social-links {
-                justify-content: center;
-                gap: 0.65rem;
-            }
-
-            .social-links a {
-                width: 36px;
-                height: 36px;
-            }
-
-            .social-links img {
-                width: 26px;
-                height: 26px;
-            }
-
-            /* One outer panel per section; remove nested mobile cards. */
-            .section {
-                margin-bottom: 1.25rem;
-                padding: 1rem;
-                border-radius: 11px;
-            }
-
-            .section-title {
-                position: relative;
-                margin: 0 0 1rem;
-                padding: 0 0 0.65rem;
-                background: none;
-                border-bottom: 1px solid var(--line);
-                border-radius: 0;
-                font-size: 1.35rem;
-            }
-
-            .section-title::after {
-                position: absolute;
-                bottom: -1px;
-                left: 0;
-                width: 2.75rem;
-                height: 2px;
-                background: var(--accent);
-                content: "";
-            }
-
-            .about-item {
-                gap: 0.7rem;
-                margin-bottom: 1rem;
-                padding: 0;
-            }
-
-            .about-item:hover {
-                background: transparent;
-            }
-
-            .about-emoji {
-                flex-basis: 1.35rem;
-                width: 1.35rem;
-                margin-top: 0.2rem;
-                font-size: 1.15rem;
-            }
-
-            .research-stack {
-                gap: 0.75rem;
-            }
-
-            .publication-card {
-                margin: 0;
-                padding: 1rem 0;
-                background: transparent;
-                border: 0;
-                border-bottom: 1px solid var(--line);
-                border-radius: 0;
-            }
-
-            .section-title + .publication-card {
-                padding-top: 0;
-            }
-
-            .publication-card:last-child {
-                padding-bottom: 0;
-                border-bottom: 0;
-            }
-
-            .publication-content h3 {
-                margin-bottom: 0.55rem;
-                font-size: 1.08rem;
-            }
-
-            .publication-authors,
-            .publication-venue {
-                margin-bottom: 0.55rem;
-            }
-
-            .employment-grid,
-            .education-grid {
-                gap: 0;
-            }
-
-            .employment-item,
-            .education-item {
-                gap: 0.9rem;
-                padding: 1rem 0;
-                background: transparent;
-                border: 0;
-                border-bottom: 1px solid var(--line);
-                border-radius: 0;
-            }
-
-            .employment-item:first-child,
-            .education-item:first-child {
-                padding-top: 0;
-            }
-
-            .employment-item:last-child,
-            .education-item:last-child {
-                padding-bottom: 0;
-                border-bottom: 0;
-            }
-
-            .employment-item:hover {
-                transform: none;
-            }
-
-            .institution-logo {
-                flex-basis: 48px;
-                width: 48px;
-                height: 48px;
-            }
-
-            .institution-details h3 {
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            body {
-                padding: 0.5rem;
-            }
-
-            .header {
-                padding: 1rem;
-            }
-
-            .profile-img {
-                width: min(100%, 260px);
-            }
-
-            .header-content h1 {
-                font-size: 2rem;
-            }
-
-            .header-role {
-                font-size: 0.92rem;
-            }
-
-            .social-links {
-                gap: 0.45rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dimitrios Bralios — Audio ML Researcher</title>
+<meta name="description" content="Dimitrios Bralios, PhD candidate at UIUC. Research on audio autoencoders, structured audio representations, generative audio, and source separation.">
+<link rel="canonical" href="https://dbralios.github.io/">
+<meta property="og:title" content="Dimitrios Bralios — Audio ML Researcher">
+<meta property="og:description" content="Research in generative audio, source separation, neural audio coding, and structured audio representations. PhD candidate at UIUC, advised by Paris Smaragdis.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dbralios.github.io/">
+<meta property="og:site_name" content="Dimitrios Bralios">
+<meta property="og:image" content="https://dbralios.github.io/img/portrait.jpg">
+<style>
+
+:root { --ink:#29323a; --muted:#5b6570; --accent:#285f84; --rule:#e0e6eb; }
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; scroll-padding-top:24px; }
+body { margin:0; background:#fff; color:var(--ink); font-family:Helvetica,Arial,sans-serif; font-size:16px; line-height:1.6; }
+.page { width:min(100% - 64px, 900px); margin:52px auto 36px; }
+a { color:var(--accent); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+a:hover { color:#173f5b; text-decoration-thickness:2px; }
+a:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:2px; }
+.skip-link { position:absolute; left:24px; top:-80px; padding:8px 12px; background:#fff; z-index:1; }
+.skip-link:focus { top:12px; }
+.intro { display:grid; grid-template-columns:180px minmax(0,1fr); gap:34px; align-items:center; padding:0; }
+.intro-copy { min-width:0; }
+h1,h2 { font-weight:600; }
+h1 { color:var(--accent); font-size:44px; line-height:1.1; letter-spacing:-1px; margin:0 0 8px; }
+.role { margin:0 0 3px; font-size:18px; font-weight:500; }
+.header-affiliation { margin:0; color:var(--muted); font-size:15px; }
+.portrait { display:block; width:180px; height:180px; object-fit:cover; border-radius:5px; }
+.contact { display:flex; align-items:center; flex-wrap:wrap; gap:6px 17px; margin-top:24px; font-size:15px; }
+.contact a { display:inline-flex; align-items:center; gap:7px; padding:5px 0; }
+.bio { margin:27px 3px 0; }
+.bio p { margin:0 0 14px; }
+.bio p:last-child { margin-bottom:0; }
+.section-nav { display:flex; flex-wrap:wrap; gap:8px 25px; border-bottom:1px solid var(--rule); padding:0 0 15px; margin:26px 0 31px; font-size:15px; }
+.section-nav a { color:var(--muted); text-decoration:none; padding:3px 0; }
+.section-nav a:hover { color:var(--accent); text-decoration:underline; }
+section { margin-bottom:39px; }
+.section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:23px; }
+h2 { margin:0; font-size:27px; line-height:1.25; letter-spacing:-.3px; }
+.section-heading>a { font-size:14px; white-space:nowrap; }
+.publication { display:grid; grid-template-columns:91px minmax(0,1fr); gap:23px; margin-bottom:26px; }
+.publication:last-child { margin-bottom:0; }
+.pub-meta { color:var(--muted); font-size:14px; line-height:1.55; padding-top:2px; }
+.pub-meta span { display:block; }
+.pub-meta span:first-child { color:var(--accent); font-weight:500; }
+h3 { font-size:17px; line-height:1.4; margin:0 0 5px; font-weight:600; }
+.authors { margin:0 0 6px; color:var(--muted); font-size:15px; line-height:1.5; }
+.author-me { color:var(--ink); font-weight:600; }
+.paper-links { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 15px; font-size:14px; }
+.paper-links a { padding:2px 0; }
+.award { color:#79561e; font-weight:600; }
+.cv-section { border-top:1px solid var(--rule); padding-top:25px; }
+.cv-row { display:grid; grid-template-columns:42px minmax(0,1fr) auto; gap:10px 18px; align-items:start; margin-bottom:23px; }
+.cv-row:last-child { margin-bottom:0; }
+.institution-logo { display:block; width:42px; height:42px; object-fit:contain; padding:2px; }
+.cv-row h3 { margin-bottom:2px; font-size:17px; }
+.cv-row p { margin:0; color:var(--muted); font-size:15px; line-height:1.5; }
+.cv-date { text-align:right; color:var(--muted); font-size:14px; line-height:1.55; padding-top:2px; }
+.cv-date span { display:block; }
+footer { border-top:1px solid var(--rule); padding-top:17px; color:var(--muted); font-size:13px; }
+@media(max-width:650px) {
+ .page { width:calc(100% - 36px); margin-top:24px; }
+ .intro { grid-template-columns:110px minmax(0,1fr); gap:20px; padding:0; align-items:center; }
+ h1 { font-size:35px; letter-spacing:-.6px; }
+ .portrait { width:110px; height:130px; }
+ .role { font-size:16px; line-height:1.35; }
+ .header-affiliation { font-size:14px; line-height:1.4; margin-top:5px; }
+ .contact { gap:5px 15px; margin-top:18px; }
+ .bio { margin-top:23px; }
+ .publication { grid-template-columns:75px minmax(0,1fr); gap:15px; }
+ h2 { font-size:25px; }
+ .section-heading { margin-bottom:21px; }
+ .cv-row { grid-template-columns:38px minmax(0,1fr); gap:3px 15px; }
+ .institution-logo { width:38px; height:38px; grid-row:1 / 3; }
+ .cv-date { grid-column:2; text-align:left; padding:0; }
+ .cv-date span { display:inline; }
+ .cv-date span+span::before { content:" · "; }
+}
+@media(max-width:480px) {
+ .intro { grid-template-columns:86px minmax(0,1fr); gap:15px; padding:0; align-items:start; }
+ .portrait { width:86px; height:104px; }
+ .intro-copy { display:contents; }
+ h1 { grid-column:2; grid-row:1; font-size:32px; margin:0; }
+ .portrait { grid-column:1; grid-row:1 / 4; }
+ .role { grid-column:2; grid-row:2; margin:0; }
+ .header-affiliation { grid-column:2; grid-row:3; margin:0; font-size:13px; }
+ .contact { grid-column:1 / -1; margin-top:3px; gap:5px 15px; font-size:14px; }
+ .section-heading { flex-wrap:wrap; gap:8px; }
+}
+@media(max-width:380px) {
+ .publication { grid-template-columns:1fr; gap:4px; }
+ .pub-meta { display:flex; gap:8px; }
+ h1 { font-size:29px; }
+}
+@media print { .page { width:100%; margin:0; } .skip-link,.section-nav { display:none; } .intro { background:transparent; } .publication,.cv-row { break-inside:avoid; } a,h1 { color:inherit; } }
+
+</style>
 </head>
 <body>
-    <header class="header">
-        <img src="./img/portrait.jpg" alt="Portrait of Dimitrios Bralios" class="profile-img">
-
-        <div class="header-content">
-            <h1>Dimitrios Bralios</h1>
-            <p class="header-role">Audio ML Researcher · PhD Candidate at UIUC</p>
-        </div>
-
-        <div class="header-actions">
-            <a
-                class="email-button"
-                href="mailto:dbralios@illinois.edu"
-                aria-label="Email Dimitrios Bralios"
-            >
-                <svg
-                    aria-hidden="true"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-                Email
-            </a>
-
-            <div class="social-links" aria-label="Social profiles">
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://scholar.google.com/citations?user=5Yfl8UsAAAAJ"
-                    aria-label="Google Scholar"
-                    title="Google Scholar"
-                >
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg"
-                        width="28"
-                        height="28"
-                        alt=""
-                    >
-                </a>
-
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/dimitrios-bralios-b5652415a/"
-                    aria-label="LinkedIn"
-                    title="LinkedIn"
-                >
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
-                        width="28"
-                        height="28"
-                        alt=""
-                    >
-                </a>
-
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://github.com/dbralios"
-                    aria-label="GitHub"
-                    title="GitHub"
-                >
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-                        width="28"
-                        height="28"
-                        alt=""
-                    >
-                </a>
-
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://x.com/DBralios"
-                    aria-label="X"
-                    title="X"
-                >
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg"
-                        width="28"
-                        height="28"
-                        alt=""
-                    >
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <section class="section">
-        <h2 class="section-title">About Me</h2>
-
-    <div class="about-item">
-    <span class="about-emoji" aria-hidden="true">🎓</span>
-    <p>
-        I am a PhD student at the <strong>University of Illinois Urbana-Champaign (UIUC)</strong>, advised by <a href="https://www.mit.edu/~paris/" class="blue-link"><strong>Paris Smaragdis</strong></a>, working on AI for audio.
-    </p>
-    </div>
-
-    <!-- Research focus -->
-    <div class="about-item">
-    <span class="about-emoji" aria-hidden="true">🔬</span>
-    <p> 
-        I develop <strong>efficient and structured representations</strong> for neural audio models. My work explores <strong>structured latent spaces</strong>, <strong>content-adaptive frame rates</strong>, and <strong>latent-domain audio processing</strong>, often by adapting pretrained audio autoencoders rather than rebuilding them from scratch. 
-    </p>
-    </div>
-
-    <div class="about-item">
-    <span class="about-emoji" aria-hidden="true">📚</span>
-    <div class="research-stack">
-    <p>
-        Recent work includes latent restructuring through <strong>Re-Bottleneck</strong>, dynamic latent frame rates through <strong>Elastic Time</strong>, and latent-domain bandwidth extension and upmixing. 
-        Earlier, I worked on source separation and generative modeling, including investigating training-data replication in audio diffusion models. 
-    </p>
-    <p>
-        My broader goal is to make generative audio systems more efficient, controllable, and reusable through better representations. 
-    </p>
-    </div>
-    </div>
-
-    <div class="about-item">
-    <span class="about-emoji" aria-hidden="true">✉️</span>
-    <p>
-        I am always happy to connect and discuss. If any of this sounds interesting, feel free to reach out.
-    </p>
-    </div>
-
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Selected Publications</h2>
-        <!-- <a class="publication-links" href="#">Full list</p> -->
-
-        <!-- C6 — Interspeech 2026 -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Elastic Time: Dynamic Frame Rate Bottlenecks for Neural Audio Coding</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Paris Smaragdis, Minje Kim.</p>
-            <p class="publication-venue">Interspeech, 2026.</p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2606.27320">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2606.27320">[Paper]</a>
-            <a href="https://github.com/dbralios/elastic-time">[Code]</a>
-            </div>
-        </div>
-        </div>
-        
-        <!-- C5 — WASPAA 2025 -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Learning to Upsample and Upmix Audio in the Latent Domain</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Paris Smaragdis, Jonah Casebeer.</p>
-            <p class="publication-venue">IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), 2025.</p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2506.00681">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2506.00681">[Paper]</a>
-            </div>
-        </div>
-        </div>
-
-        <!-- C4 — MLSP 2025 (Best Paper) -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Re-Bottleneck: Latent Re-Structuring for Neural Audio Autoencoders</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Jonah Casebeer, Paris Smaragdis.</p>
-            <p class="publication-venue">
-            IEEE International Workshop on Machine Learning for Signal Processing (MLSP), 2025.
-            </p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2507.07867">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2507.07867">[Paper]</a>
-            <span class="award-badge">🏆 Best Paper Award</span>
-            </div>
-        </div>
-        </div>
-
-        <!-- C3 — ICASSP 2024 -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Generation or Replication: Auscultating Audio Latent Diffusion Models</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Gordon Wichern, François G. Germain, Zexu Pan, Sameer Khurana, Chiori Hori, Jonathan Le Roux.</p>
-            <p class="publication-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2024.</p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2310.10604">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2310.10604">[Paper]</a>
-            <a href="https://www.merl.com/research/highlights/auscultating-diffusion">[Website]</a>
-            </div>
-        </div>
-        </div>
-
-        <!-- C2 — WASPAA 2023 -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Complete and Separate: Conditional Separation with Missing Target Source Attribute Completion</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Efthymios Tzinis, Paris Smaragdis.</p>
-            <p class="publication-venue">IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), 2023.</p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2307.14609">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2307.14609">[Paper]</a>
-            </div>
-        </div>
-        </div>
-
-        <!-- C1 — ICASSP 2023 -->
-        <div class="publication-card">
-        <div class="publication-content">
-            <h3>Latent Iterative Refinement for Modular Source Separation</h3>
-            <p class="publication-authors"><strong class="author-me">Dimitrios Bralios</strong>, Efthymios Tzinis, Gordon Wichern, Paris Smaragdis, Jonathan Le Roux.</p>
-            <p class="publication-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2023.</p>
-            <div class="publication-links">
-            <a href="https://arxiv.org/abs/2211.11917">[Abstract]</a>
-            <a href="https://arxiv.org/pdf/2211.11917">[Paper]</a>
-            </div>
-        </div>
-        </div>
-
-
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Research Experience</h2>
-        <!-- <h3 class="employment-title">Full-Time</h3> -->
-        <div class="employment-grid">
-
-            <div class="employment-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png" alt="Google Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>Google LLC</h3>
-                    <div class="location">Cambridge, MA</div>
-                    <div class="degree">Student Researcher</div>
-                    <div class="date">2026 Summer</div>
-                </div>
-            </div>
-            
-            <div class="employment-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Adobe_Logo_Standard.svg" alt="Adobe Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>Adobe</h3>
-                    <div class="location">San Francisco, CA</div>
-                    <div class="degree">Research Scientist/Engineer Intern</div>
-                    <div class="date">2025 Summer</div>
-                    <div class="date">2024 Fall (Remote, Part-Time)</div>
-                    <div class="date">2024 Summer</div>
-                </div>
-            </div>
-
-            <div class="employment-item">
-                <!-- <img src="https://merl.com/gws_template_responsive/assets_gws_template_responsive/img/merl_logo.svg" alt="MERL Logo" class="institution-logo"> -->
-                <img src="https://us.mitsubishielectric.com/global/common/img/logo.svg" alt="MERL Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>Mitsubishi Electric Research Laboratories (MERL)</h3>
-                    <div class="location">Cambridge, MA</div>
-                    <div class="degree">Research Intern</div>
-                    <div class="date">2023 Summer</div>
-                </div>
-            </div>
-
-            <div class="employment-item">
-                <!-- <img src="https://merl.com/gws_template_responsive/assets_gws_template_responsive/img/merl_logo.svg" alt="MERL Logo" class="institution-logo"> -->
-                <img src="./img/logo_uiuc.jpg" alt="UIUC Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>University of Illinois Urbana-Champaign</h3>
-                    <div class="location">Urbana, IL</div>
-                    <div class="degree">Undergraduate Research Intern</div>
-                    <div class="date">2020 Fall</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Education</h2>
-        <div class="education-grid">
-            <div class="education-item">
-                <img src="./img/logo_uiuc.jpg" alt="UIUC Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>University of Illinois Urbana-Champaign</h3>
-                    <div class="location">Urbana, IL</div>
-                    <div class="degree">PhD in Computer Science</div>
-                    <div class="date">2022 Aug. - 2027 May (Expected)</div>
-                </div>
-            </div>
-
-            <div class="education-item">
-                <img src="./img/logo_ntua.png" alt="NTUA Logo" class="institution-logo">
-                <div class="institution-details">
-                    <h3>National Technical University of Athens</h3>
-                    <div class="location">Athens, Greece</div>
-                    <div class="degree">Diploma in Electrical and Computer Engineering</div>
-                    <div class="date">2016 Oct. - 2022 May</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <p>Last updated in Jul. 2026.</p>
-    </footer>
+<a class="skip-link" href="#publications">Skip to publications</a>
+<div class="page">
+<header class="intro">
+  <img class="portrait" src="./img/portrait.jpg" width="180" height="180" alt="Portrait of Dimitrios Bralios">
+  <div class="intro-copy">
+    <h1>Dimitrios Bralios</h1>
+    <p class="role">Audio ML researcher · PhD candidate at UIUC</p>
+    <!-- <p class="header-affiliation">University of Illinois Urbana-Champaign</p> -->
+    <nav class="contact" aria-label="Contact and profiles">
+      <a href="mailto:dbralios@illinois.edu">Email</a>
+      <a href="https://scholar.google.com/citations?user=5Yfl8UsAAAAJ">Google Scholar</a>
+      <a href="https://github.com/dbralios">GitHub</a>
+      <a href="https://www.linkedin.com/in/dimitrios-bralios-b5652415a/">LinkedIn</a>
+      <a href="https://x.com/DBralios">X</a>
+    </nav>
+  </div>
+</header>
+<div class="bio">
+  <p>I am a PhD candidate in Computer Science at the University of Illinois Urbana-Champaign, advised by <a href="https://www.mit.edu/~paris/">Paris Smaragdis</a>.</p>
+  <p>
+    I work on making audio models more efficient and controllable through
+    structured representations.
+  </p>
+  <p>
+    My current research focuses on audio autoencoders: how to structure their
+    representations, adapt their temporal resolution to the signal, and process
+    audio directly in latent space, including bandwidth extension and stereo
+    upmixing. I also study equivariant representations, where audio transformations
+    correspond to simple, predictable latent operations.
+    Earlier, I worked on source separation and generative modeling, including
+    investigating training-data replication in audio diffusion models.
+  </p>
+</div>
+<nav class="section-nav" aria-label="Page sections">
+  <!-- <a href="#publications">Publications</a><a href="#experience">Research experience</a><a href="#education">Education</a> -->
+</nav>
+<main>
+<section id="publications" aria-labelledby="publications-heading">
+  <div class="section-heading"><h2 id="publications-heading">Selected publications</h2><a href="https://scholar.google.com/citations?user=5Yfl8UsAAAAJ">Full list on Scholar</a></div>
+  <article class="publication">
+      <div class="pub-meta"><span title="Interspeech, 2026.">Interspeech</span><span>2026</span></div>
+      <div class="pub-content"><h3>Elastic Time: Dynamic Frame Rate Bottlenecks for Neural Audio Coding</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Paris Smaragdis, Minje Kim.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2606.27320">arXiv</a> <a href="https://www.isca-archive.org/interspeech_2026/bralios26_interspeech.pdf">Paper</a> <a href="https://github.com/dbralios/elastic-time">Code</a> </div>
+      </div>
+    </article><article class="publication">
+      <div class="pub-meta"><span title="IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), 2025.">WASPAA</span><span>2025</span></div>
+      <div class="pub-content"><h3>Learning to Upsample and Upmix Audio in the Latent Domain</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Paris Smaragdis, Jonah Casebeer.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2506.00681">arXiv</a> <a href="https://arxiv.org/pdf/2506.00681">Paper</a> </div>
+      </div>
+    </article><article class="publication">
+      <div class="pub-meta"><span title="IEEE International Workshop on Machine Learning for Signal Processing (MLSP), 2025.">MLSP</span><span>2025</span></div>
+      <div class="pub-content"><h3>Re-Bottleneck: Latent Re-Structuring for Neural Audio Autoencoders</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Jonah Casebeer, Paris Smaragdis.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2507.07867">arXiv</a> <a href="https://arxiv.org/pdf/2507.07867">Paper</a> <span class="award">Best Paper Award</span></div>
+      </div>
+    </article><article class="publication">
+      <div class="pub-meta"><span title="IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2024.">ICASSP</span><span>2024</span></div>
+      <div class="pub-content"><h3>Generation or Replication: Auscultating Audio Latent Diffusion Models</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Gordon Wichern, François G. Germain, Zexu Pan, Sameer Khurana, Chiori Hori, Jonathan Le Roux.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2310.10604">arXiv</a> <a href="https://arxiv.org/pdf/2310.10604">Paper</a> <a href="https://www.merl.com/research/highlights/auscultating-diffusion">Project</a> </div>
+      </div>
+    </article><article class="publication">
+      <div class="pub-meta"><span title="IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA), 2023.">WASPAA</span><span>2023</span></div>
+      <div class="pub-content"><h3>Complete and Separate: Conditional Separation with Missing Target Source Attribute Completion</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Efthymios Tzinis, Paris Smaragdis.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2307.14609">arXiv</a> <a href="https://arxiv.org/pdf/2307.14609">Paper</a> </div>
+      </div>
+    </article><article class="publication">
+      <div class="pub-meta"><span title="IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2023.">ICASSP</span><span>2023</span></div>
+      <div class="pub-content"><h3>Latent Iterative Refinement for Modular Source Separation</h3><p class="authors"><strong class="author-me">Dimitrios Bralios</strong>, Efthymios Tzinis, Gordon Wichern, Paris Smaragdis, Jonathan Le Roux.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2211.11917">arXiv</a> <a href="https://arxiv.org/pdf/2211.11917">Paper</a> </div>
+      </div>
+    </article>
+</section>
+<section class="cv-section" id="experience" aria-labelledby="experience-heading">
+  <div class="section-heading"><h2 id="experience-heading">Research experience</h2></div>
+  <div class="cv-row"><img class="institution-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/250px-Google_%22G%22_logo.svg.png" width="42" height="42" alt="" loading="lazy"><div><h3>Google</h3><p>Student Researcher · Cambridge, MA</p></div><div class="cv-date">Summer 2026</div></div>
+  <div class="cv-row"><img class="institution-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Adobe_Logo_Standard.svg" width="42" height="42" alt="" loading="lazy"><div><h3>Adobe</h3><p>Research Scientist/Engineer Intern · San Francisco, CA</p></div><div class="cv-date"><span>Summer 2025</span><span>Fall 2024 · Remote, part-time</span><span>Summer 2024</span></div></div>
+  <div class="cv-row"><img class="institution-logo" src="https://us.mitsubishielectric.com/global/common/img/logo.svg" width="42" height="42" alt="" loading="lazy"><div><h3>Mitsubishi Electric Research Laboratories</h3><p>Research Intern · Cambridge, MA</p></div><div class="cv-date">Summer 2023</div></div>
+  <div class="cv-row"><img class="institution-logo" src="./img/logo_uiuc.jpg" width="42" height="42" alt="" loading="lazy"><div><h3>University of Illinois Urbana-Champaign</h3><p>Undergraduate Research Intern · Urbana, IL</p></div><div class="cv-date">Fall 2020</div></div>
+</section>
+<section class="cv-section" id="education" aria-labelledby="education-heading">
+  <div class="section-heading"><h2 id="education-heading">Education</h2></div>
+  <div class="cv-row"><img class="institution-logo" src="./img/logo_uiuc.jpg" width="42" height="42" alt="" loading="lazy"><div><h3>University of Illinois Urbana-Champaign</h3><p>PhD in Computer Science · Urbana, IL</p></div><div class="cv-date"><span>Aug. 2022 – May 2027</span><span>Expected</span></div></div>
+  <div class="cv-row"><img class="institution-logo" src="./img/logo_ntua.png" width="42" height="42" alt="" loading="lazy"><div><h3>National Technical University of Athens</h3><p>Diploma in Electrical and Computer Engineering · Athens, Greece</p></div><div class="cv-date">Oct. 2016 – May 2022</div></div>
+</section>
+</main>
+<footer>Last updated October 2026.</footer>
+</div>
 </body>
 </html>
