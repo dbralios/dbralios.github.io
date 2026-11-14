@@ -14,20 +14,27 @@
 <meta property="og:image" content="https://dbralios.github.io/img/portrait.jpg">
 <style>
 
-:root { --ink:#29323a; --muted:#5b6570; --accent:#285f84; --rule:#e0e6eb; }
+:root { 
+  --ink:#29323a; 
+  --ink-h:#21282e; 
+  --muted:#5b6570; 
+  --accent:#2d6395; 
+  --rule:#e0e6eb; 
+  --hover: #65196c;
+}
 * { box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; scroll-padding-top:24px; }
 body { margin:0; background:#fff; color:var(--ink); font-family:Helvetica,Arial,sans-serif; font-size:16px; line-height:1.6; }
 .page { width:min(100% - 64px, 900px); margin:52px auto 36px; }
 a { color:var(--accent); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
-a:hover { color:#173f5b; text-decoration-thickness:2px; }
+a:hover { color:var(--hover); text-decoration-thickness:1px; }
 a:focus-visible { outline:2px solid var(--accent); outline-offset:5px; border-radius:2px; }
 .skip-link { position:absolute; left:24px; top:-80px; padding:8px 12px; background:#fff; z-index:1; }
 .skip-link:focus { top:12px; }
 .intro { display:grid; grid-template-columns:180px minmax(0,1fr); gap:34px; align-items:center; padding:0; }
 .intro-copy { min-width:0; }
 h1,h2 { font-weight:600; }
-h1 { color:var(--accent); font-size:44px; line-height:1.1; letter-spacing:-1px; margin:0 0 8px; }
+h1 { color:var(--ink-h); font-size:33px; line-height:1.1; letter-spacing:-1px; margin:0 0 8px; }
 .role { margin:0 0 3px; font-size:18px; font-weight:500; }
 .header-affiliation { margin:0; color:var(--muted); font-size:15px; }
 .portrait { display:block; width:180px; height:180px; object-fit:cover; border-radius:5px; }
@@ -41,7 +48,7 @@ h1 { color:var(--accent); font-size:44px; line-height:1.1; letter-spacing:-1px; 
 .section-nav a:hover { color:var(--accent); text-decoration:underline; }
 section { margin-bottom:39px; }
 .section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:23px; }
-h2 { margin:0; font-size:27px; line-height:1.25; letter-spacing:-.3px; }
+h2 { margin:0; font-size:25px; line-height:1.25; letter-spacing:-.3px; }
 .section-heading>a { font-size:14px; white-space:nowrap; }
 .publication { display:grid; grid-template-columns:91px minmax(0,1fr); gap:23px; margin-bottom:26px; }
 .publication:last-child { margin-bottom:0; }
